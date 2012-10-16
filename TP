@@ -1,0 +1,19 @@
+"""importer"""
+import httplib
+import pdb
+pdb.set_trace()
+HAHA = httplib.HTTPConnection("cache.univ-st-etienne.fr", 3128)
+HAHA.request("Get", "http://www.python.org/index.html")
+REPONSE = HAHA.getresponse()
+print REPONSE.status, REPONSE.reason
+DATA = REPONSE.read()
+print DATA.count(" ") + 1
+
+
+def logger(files, message):
+    """hhh"""
+    files.write(message)
+
+FILER = open("log.txt", "w")
+logger(FILER, "statut %s" % str(REPONSE.status))
+FILER.close()
